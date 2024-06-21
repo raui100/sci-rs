@@ -229,7 +229,6 @@ fn _sosfilt32(y: &[f32], sos: &mut [Sos32], z: &mut [f32]) {
     const TILE: usize = 4;
     match (sos.len(), y.len() % TILE == 0) {
         (2, true) => {
-            let rem = y.len() % TILE;
             y.chunks_exact(TILE)
                 .zip(z.chunks_exact_mut(TILE))
                 .for_each(|c| {
@@ -240,11 +239,8 @@ fn _sosfilt32(y: &[f32], sos: &mut [Sos32], z: &mut [f32]) {
                         }
                     }
                 });
-            let idx = y.len() - rem;
-            _sosfilt32(&y[idx..], sos, &mut z[idx..]);
         }
         (4, true) => {
-            let rem = y.len() % TILE;
             y.chunks_exact(TILE)
                 .zip(z.chunks_exact_mut(TILE))
                 .for_each(|c| {
@@ -255,11 +251,8 @@ fn _sosfilt32(y: &[f32], sos: &mut [Sos32], z: &mut [f32]) {
                         }
                     }
                 });
-            let idx = y.len() - rem;
-            _sosfilt32(&y[idx..], sos, &mut z[idx..]);
         }
         (6, true) => {
-            let rem = y.len() % TILE;
             y.chunks_exact(TILE)
                 .zip(z.chunks_exact_mut(TILE))
                 .for_each(|c| {
@@ -270,11 +263,8 @@ fn _sosfilt32(y: &[f32], sos: &mut [Sos32], z: &mut [f32]) {
                         }
                     }
                 });
-            let idx = y.len() - rem;
-            _sosfilt32(&y[idx..], sos, &mut z[idx..]);
         }
         (8, true) => {
-            let rem = y.len() % TILE;
             y.chunks_exact(TILE)
                 .zip(z.chunks_exact_mut(TILE))
                 .for_each(|c| {
@@ -285,11 +275,8 @@ fn _sosfilt32(y: &[f32], sos: &mut [Sos32], z: &mut [f32]) {
                         }
                     }
                 });
-            let idx = y.len() - rem;
-            _sosfilt32(&y[idx..], sos, &mut z[idx..]);
         }
         (10, true) => {
-            let rem = y.len() % TILE;
             y.chunks_exact(TILE)
                 .zip(z.chunks_exact_mut(TILE))
                 .for_each(|c| {
@@ -300,8 +287,6 @@ fn _sosfilt32(y: &[f32], sos: &mut [Sos32], z: &mut [f32]) {
                         }
                     }
                 });
-            let idx = y.len() - rem;
-            _sosfilt32(&y[idx..], sos, &mut z[idx..]);
         }
         _ => {
             for (yi, zi) in y.iter().zip(z.iter_mut()) {
@@ -324,7 +309,6 @@ fn _sosfilt_isize_32<I: Copy + Into<isize>>(y: &[I], sos: &mut [Sos32], z: &mut 
     const TILE: usize = 4;
     match (sos.len(), y.len() % TILE == 0) {
         (2, true) => {
-            let rem = y.len() % TILE;
             y.chunks_exact(TILE)
                 .zip(z.chunks_exact_mut(TILE))
                 .for_each(|c| {
@@ -335,11 +319,8 @@ fn _sosfilt_isize_32<I: Copy + Into<isize>>(y: &[I], sos: &mut [Sos32], z: &mut 
                         }
                     }
                 });
-            let idx = y.len() - rem;
-            _sosfilt_isize_32(&y[idx..], sos, &mut z[idx..]);
         }
         (4, true) => {
-            let rem = y.len() % TILE;
             y.chunks_exact(TILE)
                 .zip(z.chunks_exact_mut(TILE))
                 .for_each(|c| {
@@ -350,11 +331,8 @@ fn _sosfilt_isize_32<I: Copy + Into<isize>>(y: &[I], sos: &mut [Sos32], z: &mut 
                         }
                     }
                 });
-            let idx = y.len() - rem;
-            _sosfilt_isize_32(&y[idx..], sos, &mut z[idx..]);
         }
         (6, true) => {
-            let rem = y.len() % TILE;
             y.chunks_exact(TILE)
                 .zip(z.chunks_exact_mut(TILE))
                 .for_each(|c| {
@@ -365,11 +343,8 @@ fn _sosfilt_isize_32<I: Copy + Into<isize>>(y: &[I], sos: &mut [Sos32], z: &mut 
                         }
                     }
                 });
-            let idx = y.len() - rem;
-            _sosfilt_isize_32(&y[idx..], sos, &mut z[idx..]);
         }
         (8, true) => {
-            let rem = y.len() % TILE;
             y.chunks_exact(TILE)
                 .zip(z.chunks_exact_mut(TILE))
                 .for_each(|c| {
@@ -380,11 +355,8 @@ fn _sosfilt_isize_32<I: Copy + Into<isize>>(y: &[I], sos: &mut [Sos32], z: &mut 
                         }
                     }
                 });
-            let idx = y.len() - rem;
-            _sosfilt_isize_32(&y[idx..], sos, &mut z[idx..]);
         }
         (10, true) => {
-            let rem = y.len() % TILE;
             y.chunks_exact(TILE)
                 .zip(z.chunks_exact_mut(TILE))
                 .for_each(|c| {
@@ -395,8 +367,6 @@ fn _sosfilt_isize_32<I: Copy + Into<isize>>(y: &[I], sos: &mut [Sos32], z: &mut 
                         }
                     }
                 });
-            let idx = y.len() - rem;
-            _sosfilt_isize_32(&y[idx..], sos, &mut z[idx..]);
         }
         _ => {
             for (yi, zi) in y.iter().zip(z.iter_mut()) {
