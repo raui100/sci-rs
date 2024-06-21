@@ -233,9 +233,8 @@ fn _sosfilt32(y: &[f32], sos: &mut [Sos32], z: &mut [f32]) {
                 .zip(z.chunks_exact_mut(TILE))
                 .for_each(|c| {
                     for (yi, zi) in c.0.iter().zip(c.1.iter_mut()) {
-                        *zi = *yi;
                         for s in sos.iter_mut() {
-                            *zi = biquad_fold(*zi, s);
+                            *zi = biquad_fold(*yi, s);
                         }
                     }
                 });
@@ -245,9 +244,8 @@ fn _sosfilt32(y: &[f32], sos: &mut [Sos32], z: &mut [f32]) {
                 .zip(z.chunks_exact_mut(TILE))
                 .for_each(|c| {
                     for (yi, zi) in c.0.iter().zip(c.1.iter_mut()) {
-                        *zi = *yi;
                         for s in sos.iter_mut() {
-                            *zi = biquad_fold(*zi, s);
+                            *zi = biquad_fold(*yi, s);
                         }
                     }
                 });
@@ -257,9 +255,8 @@ fn _sosfilt32(y: &[f32], sos: &mut [Sos32], z: &mut [f32]) {
                 .zip(z.chunks_exact_mut(TILE))
                 .for_each(|c| {
                     for (yi, zi) in c.0.iter().zip(c.1.iter_mut()) {
-                        *zi = *yi;
                         for s in sos.iter_mut() {
-                            *zi = biquad_fold(*zi, s);
+                            *zi = biquad_fold(*yi, s);
                         }
                     }
                 });
@@ -269,9 +266,8 @@ fn _sosfilt32(y: &[f32], sos: &mut [Sos32], z: &mut [f32]) {
                 .zip(z.chunks_exact_mut(TILE))
                 .for_each(|c| {
                     for (yi, zi) in c.0.iter().zip(c.1.iter_mut()) {
-                        *zi = *yi;
                         for s in sos.iter_mut() {
-                            *zi = biquad_fold(*zi, s);
+                            *zi = biquad_fold(*yi, s);
                         }
                     }
                 });
@@ -281,18 +277,16 @@ fn _sosfilt32(y: &[f32], sos: &mut [Sos32], z: &mut [f32]) {
                 .zip(z.chunks_exact_mut(TILE))
                 .for_each(|c| {
                     for (yi, zi) in c.0.iter().zip(c.1.iter_mut()) {
-                        *zi = *yi;
                         for s in sos.iter_mut() {
-                            *zi = biquad_fold(*zi, s);
+                            *zi = biquad_fold(*yi, s);
                         }
                     }
                 });
         }
         _ => {
             for (yi, zi) in y.iter().zip(z.iter_mut()) {
-                *zi = *yi;
                 for s in sos.iter_mut() {
-                    *zi = biquad_fold(*zi, s);
+                    *zi = biquad_fold(*yi, s);
                 }
             }
         }
